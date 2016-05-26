@@ -1,46 +1,135 @@
-.home-wrap header
-  width: 135px
-  padding: 30px 0
-  background: white
-
-  .header-position
-    position: fixed
-    top: 30px
-    left: 0
-    bottom: 30px
+.home-wrap
+  header
     width: 135px
-    display: flex
-    flex-direction: column
-    justify-content: space-between
+    padding: 30px 0
+    background: white
 
-    .logo
-      //to hide text in h1
-      overflow: hidden;
-      text-indent: 101%;
-      white-space: nowrap;
+    .header-position
+      position: fixed
+      top: 30px
+      left: 0
+      bottom: 30px
+      width: 135px
+      display: flex
+      flex-direction: column
+      justify-content: space-between
 
-      background:
-        image: url(/assets/img/logo-tn.svg)
-        repeat: no-repeat
-        position: center
-        size: contain
-      height: 80px
-      padding: 0
-      margin: 0
+      .logo
+        max-width: 135px
+        //to hide text in h1
+        overflow: hidden;
+        text-indent: 101%;
+        white-space: nowrap;
 
-    nav.site-nav
-      ul
-        list-style: none
-        // margin: 20px 0
-        padding: 0 20px 0 0
+        background:
+          image: url(/assets/img/logo-tn.svg)
+          repeat: no-repeat
+          position: center
+          size: contain
+        height: 80px
+        padding: 0
+        margin: 0
+
+      nav.site-nav
+        ul
+          list-style: none
+          // margin: 20px 0
+          padding: 0 20px 0 0
+          text-align: right
+          li
+            margin-bottom: 10px
+
+          &:last-child
+            margin-bottom: 0
+
+      .email-link
+        display: block
         text-align: right
-        li
-          margin-bottom: 10px
+        padding-right: 20px
 
-        &:last-child
-          margin-bottom: 0
+      .mobile-nav-toggle
+        display: none
+        height: 50px
+        width: 50px
+        margin-right: 20px
+        align-items: center
+        cursor: pointer
 
-    .email-link
+        span,
+        span:before,
+        span:after
+          background: #333
+          height: 2px
+          width: 100%
+          display: block
+          content: ""
+          position: relative
+          transition: all 0.3s ease-in-out
+
+        span::before
+          top: -15px
+
+        span::after
+          top: 13px
+
+        &.is-open span
+          background: transparent
+
+
+        &.is-open span:before
+          transform-origin: center
+          transform: rotate(45deg)
+          top: 0
+
+        &.is-open span:after
+          transform-origin: center
+          transform: rotate(-45deg)
+          top: 0
+
+  .mobile-nav
+    display: none
+    position: absolute
+    width: 100%
+    padding: 70px 0 20px 0
+    background: white
+    transform: translate(-120%) //
+    transition: all 0.3s ease-in-out
+
+    ul
+      list-style: none
+      margin: 0
+      padding: 0
+
+      li
+        margin-bottom: 10px
+        text-align: center
+
+
+@media (max-width: 775px)
+  .home-wrap
+    header
+      width: auto
+      padding: 20px 0
+
+      .header-position
+        width: auto
+        position: relative
+        top: auto
+        bottom: auto
+        left: auto
+        flex-direction: row
+        align-items: center
+
+        .site-nav,
+        .email-link
+          display: none
+
+        .logo
+          height: 45px
+
+        .mobile-nav-toggle
+          display: flex
+
+    .mobile-nav.is-open
       display: block
-      text-align: right
-      padding-right: 20px
+      transform: translateY(0%)
